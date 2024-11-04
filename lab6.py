@@ -1,5 +1,5 @@
-import data
 from typing import Optional
+import data
 
 # Write your functions for each part in the space below.
 
@@ -37,12 +37,54 @@ def selection_sort(values:list[int]) -> None:
 
 
 # Part 1
+from typing import List
+
+# Assume Book class is defined as provided
+
+def selection_sort_books(books: List[Book]) -> None:
+    n = len(books)
+    for i in range(n):
+        min_index = i
+        for j in range(i + 1, n):
+            if books[j].title < books[min_index].title:
+                min_index = j
+        books[i], books[min_index] = books[min_index], books[i]
 
 
 # Part 2
+    def swap_case(s: str) -> str:
+        #Returns a string with each lowercase letter in `s`
+        #converted to uppercase,and each uppercase letter converted to lowerca
+        result = []
+        for char in s:
+            if char.islower():
+                result.append(char.upper())
+            elif char.isupper():
+                result.append(char.lower())
+            else:
+                result.append(char)
+        return ''.join(result)
 
 
 # Part 3
-
+def str_translate(s: str, old: str, new: str) -> str:
+    #Replaces each occurrence of `old` in `s` with `new` and returns the modified string.
+    result = []
+    for char in s:
+        if char == old:
+            result.append(new)
+        else:
+            result.append(char)
+    return ''.join(result)
 
 # Part 4
+def histogram(s: str) -> dict:
+    #returns a dictionary mapping each word in `s` to its count.
+    word_counts = {}
+    words = s.split()  # Split the string by spaces to get words
+    for word in words:
+        if word in word_counts:
+            word_counts[word] += 1  # Increment count if word is already in the dictionary
+        else:
+            word_counts[word] = 1   # Initialize count to 1 for a new word
+    return word_counts
