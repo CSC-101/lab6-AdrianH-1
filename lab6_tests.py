@@ -64,16 +64,88 @@ class TestCases(unittest.TestCase):
 
 
     # Part 1
+    import unittest
 
+    class TestSelectionSortBooks(unittest.TestCase):
+        def test_empty_list(self):
+            books = []
+            selection_sort_books(books)
+            self.assertEqual(books, [])
+
+        def test_sort_books_by_title(self):
+            books = [
+                Book(["Author A"], "Zoo"),
+                Book(["Author B"], "Apple"),
+                Book(["Author C"], "Lemon")
+            ]
+            selection_sort_books(books)
+            expected = [
+                Book(["Author B"], "Apple"),
+                Book(["Author C"], "Lemon"),
+                Book(["Author A"], "Zoo")
+            ]
+            self.assertEqual(books, expected)
+
+    if __name__ == '__main__':
+        unittest.main()
 
     # Part 2
+    import unittest
 
+    class TestSwapCase(unittest.TestCase):
+        def test_mixed_case_string(self):
+            self.assertEqual(swap_case("Hello World!"), "hELLO wORLD!")
+
+        def test_non_english_letters(self):
+            self.assertEqual(swap_case("Ærø Island"), "æRØ iSLAND")
+
+        def test_numbers_and_symbols(self):
+            self.assertEqual(swap_case("123 ABC def!"), "123 abc DEF!")
+
+        def test_empty_string(self):
+            self.assertEqual(swap_case(""), "")
+
+    if __name__ == '__main__':
+        unittest.main()
 
     # Part 3
+    import unittest
 
+    class TestStrTranslate(unittest.TestCase):
+        def test_replacement(self):
+            self.assertEqual(str_translate('abcdcba', 'a', 'x'), 'xbcdcbx')
+
+        def test_no_replacement_needed(self):
+            self.assertEqual(str_translate('hello', 'z', 'y'), 'hello')
+
+        def test_multiple_replacements(self):
+            self.assertEqual(str_translate('mississippi', 'i', 'o'), 'mossossoppo')
+
+        def test_empty_string(self):
+            self.assertEqual(str_translate('', 'a', 'b'), '')
+
+    if __name__ == '__main__':
+        unittest.main()
 
     # Part 4
+import unittest
 
+class TestHistogram(unittest.TestCase):
+    def test_basic_count(self):
+        self.assertEqual(histogram("apple banana apple"), {'apple': 2, 'banana': 1})
+
+    def test_empty_string(self):
+        self.assertEqual(histogram(""), {})
+
+    def test_multiple_words(self):
+        self.assertEqual(histogram("cat dog cat dog bird"), {'cat': 2, 'dog': 2, 'bird': 1})
+
+    def test_single_word(self):
+        self.assertEqual(histogram("test"), {'test': 1})
+
+
+if __name__ == '__main__':
+    unittest.main()
 
 
 
